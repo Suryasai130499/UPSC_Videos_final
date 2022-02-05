@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  margin-block: 2rem;
+}
+
+.subjects {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  color: var(--color-primary-900);
+}
