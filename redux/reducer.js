@@ -5,12 +5,18 @@ import * as actions from '../redux/actions';
 import * as actionTypes from '../redux/actionTypes';
 
 const INITIAL_STATE = {
-  subject: '',
+  subjects: {
+    'Modern_History': 21,
+    'Geography': 18,
+    'Ethics': 12,
+    'Science_And_Technology': 23,
+    'Environment': 21,
+  },
   videos: [],
   activeVideo: 0,
 }
 
-const Reducer = createReducer(state = INITIAL_STATE, (builder) => {
+const Reducer = createReducer(INITIAL_STATE, (builder) => {
   builder.addCase(
       actionTypes.SET_SUBJECT, (state, action) => ({
         ...state,

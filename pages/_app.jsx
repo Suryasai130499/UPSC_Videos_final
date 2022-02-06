@@ -1,7 +1,4 @@
 import {
-  useEffect
-} from 'react';
-import {
   Provider
 } from 'react-redux';
 import '../styles/globals.css';
@@ -12,21 +9,9 @@ function MyApp({
   Component,
   pageProps,
 }) {
-  useEffect(() => {
-    const subjects = {
-      'Modern_History': 21,
-      'Geography': 18,
-      'Ethics': 12,
-      'Science_And_Technology': 23,
-      'Environment': 21,
-    }
-
-    localStorage.setItem("Subjects", JSON.stringify(subjects));
-  }, []);
-
   return (
     <Provider store={store}>
-      < Component {
+      <Component {
         ...pageProps
       }
       />

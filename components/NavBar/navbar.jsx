@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from '../../styles/NavBar.module.css'
+import { connect } from 'react-redux';
+import styles from '../../styles/NavBar.module.css';
+import { useRouter } from 'next/router';
 
-const NavBar = () => {
-  const [subjects, setSubjects] = useState({});
-
-  useEffect(() => {
-    setSubjects(JSON.parse(localStorage.getItem('Subjects')));
-  }, []);
-
+const NavBar = ({ subjects }) => {
+  const Router = useRouter();
   return (
     <nav className={styles.navbar}>
       <h4>UPSC Videos</h4>
@@ -27,4 +23,8 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStatetoProps = (state) => ({
+  subjects: state.subjects,
+})
+
+export default connect(mapStatetoProps)(NavBar);
