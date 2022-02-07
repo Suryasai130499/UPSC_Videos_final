@@ -5,6 +5,7 @@ import * as actions from '../redux/actions';
 import * as actionTypes from '../redux/actionTypes';
 
 const INITIAL_STATE = {
+  number: 0,
   subjects: {
     'Modern_History': 21,
     'Geography': 18,
@@ -21,6 +22,11 @@ const Reducer = createReducer(INITIAL_STATE, (builder) => {
       actionTypes.SET_SUBJECT, (state, action) => ({
         ...state,
         subject: action.payload,
+      }))
+    .addCase(
+      actionTypes.SET_NUMBER, (state, action) => ({
+        ...state,
+        number: action.payload,
       }))
     .addCase(
       actionTypes.SET_VIDEOS, (state, action) => ({

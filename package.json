@@ -2,13 +2,14 @@
   "name": "upsc_videos_final",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=3001 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
+    "classnames": "^2.3.1",
     "next": "12.0.10",
     "ngx-thumbnail-video": "^0.0.9",
     "react": "17.0.2",
@@ -16,6 +17,7 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
+    "uuid": "^8.3.2",
     "video-react": "^0.15.0"
   },
   "devDependencies": {

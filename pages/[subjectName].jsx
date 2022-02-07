@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import styles from '../styles/subjectname.module.css';
 import VideoSection from "../components/videoSection/videoSection";
+import List from '../components/List/list';
 import Nav from '../components/NavBar/navbar';
 import * as actions from '../redux/actions';
 
 const SubjectPage = ({
-  subject,
   setSubject,
+  setNumber,
   videos,
   setVideos,
   videoProp,
   activeVideo,
   subjectName,
-  setActiveVideo,
 }) => {
   useEffect(() => {
     setSubject(subjectName);
@@ -20,12 +22,16 @@ const SubjectPage = ({
 
   useEffect(() => {
     setVideos(videoProp);
-  }, [setVideos, videoProp]);
+    setNumber(videoProp.length);
+  }, [setNumber, setVideos, videoProp]);
 
   return (
     <>
       <Nav />
-      <VideoSection key={subject} src={videos[activeVideo]} />
+      <div className={styles.content}>
+        <VideoSection key={uuidv4()} src={videos[activeVideo]} />
+        <List />
+      </div>
     </>
   );
 };
@@ -40,7 +46,9 @@ export function getServerSideProps({ params: { subjectName } }) {
     'Environment': 21,
   };
   const videos = [];
-  for (let i = 1; i <= subjects[subjectName]; i++) {
+  const number = subjects[subjectName];
+  console.log(number);
+  for (let i = 1; i <= number; i++) {
     videos.push(`${host}/${subjectName}/${i}.mp4`);
   }
 
@@ -48,20 +56,20 @@ export function getServerSideProps({ params: { subjectName } }) {
     props: {
       subjectName,
       videoProp: videos,
+      number,
     }
   };
 };
 
 const mapStatetoProps = (state) => ({
-  subject: state.subject,
   videos: state.videos,
   activeVideo: state.activeVideo,
 });
 
 const mapDispatchtoProps = (dispatch) => ({
+  setNumber: (value) => dispatch(actions.setNumber(value)),
   setSubject: (value) => dispatch(actions.setSubject(value)),
   setVideos: (value) => dispatch(actions.setVideos(value)),
-  setActiveVideo: (value) => dispatch(actions.setActiveVideo(value)),
 });
 
 export default connect(mapStatetoProps, mapDispatchtoProps)(SubjectPage);
