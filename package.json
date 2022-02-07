@@ -11,7 +11,6 @@
     "@reduxjs/toolkit": "^1.7.2",
     "classnames": "^2.3.1",
     "next": "12.0.10",
-    "ngx-thumbnail-video": "^0.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6",

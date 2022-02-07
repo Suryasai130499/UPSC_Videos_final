@@ -26,3 +26,10 @@
   background: var(--color-accent);
   color: var(--color-secondary-100);
 }
+
+@media screen and (max-width: 1000px) {
+  .list {
+    width: 100vw;
+    height: min-content;
+  }
+}

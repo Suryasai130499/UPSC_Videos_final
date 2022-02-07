@@ -10,12 +10,17 @@ import {
   BigPlayButton,
   LoadingSpinner,
 } from 'video-react';
+import { connect } from 'react-redux';
 import styles from '../../styles/videoSection.module.css';
 
-const VideoSection = ({ src }) => {
+const VideoSection = ({
+  src,
+  subject,
+  activeVideo,
+}) => {
   return (
     <div className={styles.wrapper}>
-      <Player>
+      <Player preload='metadata'>
         <source src={src} type="video/mp4" />
         <LoadingSpinner />
         <BigPlayButton position="center" />
@@ -28,8 +33,16 @@ const VideoSection = ({ src }) => {
           <VolumeMenuButton vertical />
         </ControlBar>
       </Player>
+      <p className={styles.title}>
+        {`${subject} Lecture No: ${activeVideo + 1}`}
+      </p>
     </div>
   );
 };
 
-export default VideoSection;
+const mapStatetoProps = (state) => ({
+  subject: state.subject,
+  activeVideo: state.activeVideo,
+});
+
+export default connect(mapStatetoProps)(VideoSection);

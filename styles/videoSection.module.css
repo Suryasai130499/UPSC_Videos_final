@@ -2,8 +2,17 @@
   width: 70vw;
 }
 
+.title {
+  font-size: 2.5rem;
+  padding-inline-start: 2.5rem;
+  padding-block-start: 2.5rem;
+}
+
 @media screen and (max-width: 1000px) {
   .wrapper {
     width: 100vw;
+  }
+  .title {
+    display: none;
   }
 }
