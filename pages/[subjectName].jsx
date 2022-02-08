@@ -37,7 +37,7 @@ const SubjectPage = ({
 };
 
 export function getServerSideProps({ params: { subjectName } }) {
-  const host = "https://upscvideos.s3.us-east-2.amazonaws.com/Insights";
+  const host = "https://d2079f16nbq7cw.cloudfront.net/Insights";
   const subjects = {
     'Modern_History': 21,
     'Geography': 18,
