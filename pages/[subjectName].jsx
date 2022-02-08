@@ -47,7 +47,6 @@ export function getServerSideProps({ params: { subjectName } }) {
   };
   const videos = [];
   const number = subjects[subjectName];
-  console.log(number);
   for (let i = 1; i <= number; i++) {
     videos.push(`${host}/${subjectName}/${i}.mp4`);
   }

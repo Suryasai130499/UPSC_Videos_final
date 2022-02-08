@@ -17,7 +17,6 @@ const List = ({
   useEffect(() => {
     const vl = [];
     for (let i = 1; i <= number; i++) {
-      console.log(i);
       vl.push(`${subject} Lecture No: ${i}`);
     };
     setVideoList(vl);
