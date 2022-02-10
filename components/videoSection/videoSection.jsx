@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import {
   Player,
   ControlBar,
@@ -18,9 +19,11 @@ const VideoSection = ({
   subject,
   activeVideo,
 }) => {
+  const playerRef = useRef(null);
+
   return (
     <div className={styles.wrapper}>
-      <Player preload='metadata'>
+      <Player ref={(player) => playerRef.current = player} preload='metadata'>
         <source src={src} type="video/mp4" />
         <LoadingSpinner />
         <BigPlayButton position="center" />

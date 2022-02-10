@@ -48,7 +48,11 @@ export function getServerSideProps({ params: { subjectName } }) {
   const videos = [];
   const number = subjects[subjectName];
   for (let i = 1; i <= number; i++) {
-    videos.push(`${host}/${subjectName}/${i}.mp4`);
+    if (subjectName === 'Modern_History') {
+      videos.push(`${host}/${subjectName}/${i}.webm`);
+    } else {
+      videos.push(`${host}/${subjectName}/${i}.mp4`);
+    }
   }
 
   return {
