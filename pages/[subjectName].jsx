@@ -44,6 +44,7 @@ export function getServerSideProps({ params: { subjectName } }) {
     'Ethics': 12,
     'Science_And_Technology': 23,
     'Environment': 21,
+    'Economics': 9,
   };
   const videos = [];
   const number = subjects[subjectName];

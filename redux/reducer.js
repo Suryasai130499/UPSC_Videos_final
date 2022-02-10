@@ -12,6 +12,7 @@ const INITIAL_STATE = {
     'Ethics': 12,
     'Science_And_Technology': 23,
     'Environment': 21,
+    'Economics': 9,
   },
   videos: [],
   activeVideo: 0,
