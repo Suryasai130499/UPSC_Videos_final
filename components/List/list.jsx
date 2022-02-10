@@ -22,6 +22,11 @@ const List = ({
     setVideoList(vl);
   }, [number, setActiveVideo, subject]);
 
+  const handleLinkClick = (index) => {
+    setActiveVideo(index);
+    scrollTo(0, 0);
+  };
+
   return (
     <div className={styles.list}>
       <ul>
@@ -30,7 +35,7 @@ const List = ({
             <li className={
               cx(styles.listItem,
                 { [styles.active]: index === activeVideo })
-            } key={uuidv4()} onClick={() => setActiveVideo(index)}>{item}</li>
+            } key={uuidv4()} onClick={() => handleLinkClick(index)}>{item}</li>
           ))
         }
       </ul>
