@@ -10,6 +10,7 @@ import * as actions from '../../redux/actions';
 const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVideo, setInstitute, setSubjects }) => {
   const Subjects = useRef(null);
   const DropdownRef = useRef([]);
+  const [active, setActive] = useState(null);
 
   let Institutes = [];
   const subs = [];
@@ -23,9 +24,7 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
 
   const openDropDown = (index) => {
     setInstitute(Institutes[index]);
-    setSubjects(subs[index]);
-    DropdownRef.current[index].classList.toggle(styles.active);
-    console.log(DropdownRef.current);
+    active === index ? setActive(null) : setActive(index);
   }
 
   return (
@@ -42,9 +41,9 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
               <li onClick={() => openDropDown(index)} className={styles.institute} key={uuidv4()}>
                 {institute}
                 <span className={styles.caretdown} />
-                <div ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={styles.dropdown}>
+                <div ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={cx(styles.dropdown, { [styles.active]: index === active })}>
                   {
-                    Object.keys(subjects).map((subject) => (
+                    Object.keys(institutes[index].subjects).map((subject) => (
                       <Link href={`/${institute}/${subject}`} key={uuidv4()}>
                         <a>
                           {subject}
