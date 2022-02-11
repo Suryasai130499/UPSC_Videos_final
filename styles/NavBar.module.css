@@ -48,17 +48,22 @@
   margin-block-start: 1rem;
   position: absolute;
   z-index: 1000;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
   background-color: var(--color-accent);
   color: var(--color-secondary-100);
   padding: 1rem;
   border-radius: 0.5rem;
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: transform 350ms cubic-bezier(0.43, -0.34, 0.44, 2);
+  /* animation: popup 350ms cubic-bezier(0.43, -0.34, 0.44, 2) alternate; */
 }
 
 .dropdown.active {
-  display: flex;
+  transform: scale(1, 1);
 }
 
 .menu {
@@ -133,5 +138,14 @@
 
   .subjects > a > li.active {
     color: var(--color-primary-400);
+  }
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(0, 1);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }
