@@ -24,7 +24,11 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
 
   const openDropDown = (index) => {
     setInstitute(Institutes[index]);
-    active === index ? setActive(null) : setActive(index);
+    setActive(index);
+  }
+
+  const closeDropDown = (index) => {
+    setActive(null);
   }
 
   return (
@@ -38,32 +42,40 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
         <ul ref={Subjects} className={styles.subjects}>
           {
             Institutes.map((institute, index) => (
-              <li onClick={() => openDropDown(index)} className={styles.institute} key={uuidv4()}>
-                {institute}
+              <li onMouseEnter={() => openDropDown(index)} className={styles.institute} key={uuidv4()}>
+                <Link href={`/${institute}`}>
+                  <a>
+                    {institute}
+                  </a>
+                </Link>
                 <span className={styles.caretdown} />
-                <div ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={cx(styles.dropdown, { [styles.active]: index === active })}>
+                <ul onMouseLeave={() => closeDropDown(index)} ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={cx(styles.dropdown, { [styles.active]: index === active })}>
                   {
                     Object.keys(institutes[index].subjects).map((subject) => (
-                      <Link href={`/${institute}/${subject}`} key={uuidv4()}>
-                        <a>
-                          {subject}
-                        </a>
-                      </Link>
+                      <li key={uuidv4()}>
+                        <Link href={`/${institute}/${subject}`}>
+                          <a>
+                            {subject}
+                          </a>
+                        </Link>
+                      </li>
                     ))
                   }
-                </div>
+                </ul>
               </li>
             ))
           }
-          {/* {Object.keys(subjects).map((key, index) => {
-            return <Link key={uuidv4()} href={`/${key}`} passHref>
-              <a>
-                <li onClick={() => closeMenu()} className={cx({ [styles.active]: key === subject })}>
-                  {key}
-                </li>
-              </a>
-            </Link> */}
-          {/* })} */}
+          {
+            Object.keys(subjects).map((key, index) => {
+              return <Link key={uuidv4()} href={`/${key}`} passHref>
+                <a>
+                  <li onClick={() => closeMenu()} className={cx({ [styles.active]: key === subject })}>
+                    {key}
+                  </li>
+                </a>
+              </Link>
+            })
+          }
         </ul>
         <div className={styles.menu} onClick={() => openMenu()}>
           <span className={styles.hamburger} />

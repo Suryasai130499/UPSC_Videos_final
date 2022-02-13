@@ -1,5 +1,12 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper {
+  position: relative;
   width: 70vw;
+  aspect-ratio: 16 / 9;
 }
 
 .title {

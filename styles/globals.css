@@ -11,6 +11,16 @@
   --color-accent: hsla(309, 6%, 58%, 1);
   --color-secondary-400: hsla(11, 24%, 72%, 1);
   --color-secondary-100: hsla(21, 35%, 92%, 1);
+
+  /* Typography */
+  --step--2: clamp(0.69rem, 0.67rem + 0.11vw, 0.75rem);
+  --step--1: clamp(0.83rem, 0.74rem + 0.44vw, 1.06rem);
+  --step-0: clamp(1rem, 0.8rem + 0.98vw, 1.5rem);
+  --step-1: clamp(1.2rem, 0.84rem + 1.8vw, 2.12rem);
+  --step-2: clamp(1.44rem, 0.83rem + 3.04vw, 3rem);
+  --step-3: clamp(1.73rem, 0.75rem + 4.9vw, 4.24rem);
+  --step-4: clamp(2.07rem, 0.54rem + 7.65vw, 6rem);
+  --step-5: clamp(2.49rem, 0.15rem + 11.69vw, 8.48rem);
 }
 
 html,
