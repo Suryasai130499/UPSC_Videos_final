@@ -10,23 +10,23 @@ const INITIAL_STATE = {
   institute: '',
   institutes: [{
       name: 'Insights',
-      subjects: {
-        'Modern_History': 21,
-        'Geography': 18,
-        'Ethics': 12,
-        'Science_And_Technology': 23,
-        'Environment': 20,
-        'Economics': 9,
-      },
+      subjects: [
+        'Modern_History',
+        'Geography',
+        'Ethics',
+        'Science_And_Technology',
+        'Environment',
+        'Economics',
+      ],
     },
     {
       name: 'Laex_NCERTs',
-      subjects: {
-        'Polity': 20,
-        'Geography': 23,
-        'Economics': 23,
-        'History': 20,
-      }
+      subjects: [
+        'Polity',
+        'Geography',
+        'Economics',
+        'History',
+      ]
     },
   ],
   videos: [],
@@ -48,6 +48,11 @@ const Reducer = createReducer(INITIAL_STATE, (builder) => {
       actionTypes.SET_INSTITUTE, (state, action) => ({
         ...state,
         institute: action.payload,
+      }))
+    .addCase(
+      actionTypes.SET_INSTITUTES, (state, action) => ({
+        ...state,
+        institutes: action.payload,
       }))
     .addCase(
       actionTypes.SET_NUMBER, (state, action) => ({

@@ -3,11 +3,10 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import cx from 'classnames';
-import Dropdown from '../dropdown';
 import styles from '../../styles/NavBar.module.css';
 import * as actions from '../../redux/actions';
 
-const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVideo, setInstitute, setSubjects }) => {
+const NavBar = ({ subject, subjects, institutes, setInstitute }) => {
   const Subjects = useRef(null);
   const DropdownRef = useRef([]);
   const [active, setActive] = useState(null);
@@ -22,12 +21,17 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
     Subjects.current.classList.toggle(styles.show);
   }
 
+  const closeMenu = () => {
+    Subjects.current.classList.remove(styles.show);
+    setActiveVideo(0);
+  }
+
   const openDropDown = (index) => {
     setInstitute(Institutes[index]);
     setActive(index);
   }
 
-  const closeDropDown = (index) => {
+  const closeDropDown = () => {
     setActive(null);
   }
 
@@ -49,13 +53,13 @@ const NavBar = ({ subject, subjects, selectedInstitute, institutes, setActiveVid
                   </a>
                 </Link>
                 <span className={styles.caretdown} />
-                <ul onMouseLeave={() => closeDropDown(index)} ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={cx(styles.dropdown, { [styles.active]: index === active })}>
+                <ul onMouseLeave={() => closeDropDown()} ref={dropdownRef => DropdownRef.current[index] = dropdownRef} className={cx(styles.dropdown, { [styles.active]: index === active })}>
                   {
-                    Object.keys(institutes[index].subjects).map((subject) => (
-                      <li key={uuidv4()}>
+                    institutes[index].subjects.map((subject) => (
+                      <li onClick={() => closeDropDown()} key={uuidv4()}>
                         <Link href={`/${institute}/${subject}`}>
                           <a>
-                            {subject}
+                            {subject.split('_').join(' ')}
                           </a>
                         </Link>
                       </li>

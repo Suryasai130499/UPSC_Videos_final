@@ -7,7 +7,7 @@ const SubjectCard = ({ name, count, institute }) => {
       <div className={styles.card}>
         <div className={styles.wrapper}>
           <div className={styles.card_content}>
-            <p className={styles.card_title}>{name}</p>
+            <p className={styles.card_title}>{name.split('_').join(' ')}</p>
             <p className={styles.card_count}>{`${count} Videos`}</p>
           </div>
           <Link href={`/${institute}/${name}`}>

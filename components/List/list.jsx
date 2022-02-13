@@ -10,7 +10,6 @@ import * as actions from '../../redux/actions';
 
 const List = ({
   number,
-  institute,
   subject,
   activeVideo,
   setActiveVideo,
@@ -25,7 +24,8 @@ const List = ({
     setVideoList(vl);
   }, [number, setActiveVideo, subject]);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (index) => {
+    setActiveVideo(index);
     scrollTo(0, 0);
   };
 
@@ -37,12 +37,10 @@ const List = ({
             <li key={uuidv4()} className={
               cx(styles.listItem,
                 { [styles.active]: index === activeVideo })
-            } onClick={() => handleLinkClick()}>
-              <Link href={`/${institute}/${subject}/${Number(index + 1)}`}>
-                <a>
-                  {item}
-                </a>
-              </Link>
+            } onClick={() => handleLinkClick(index)}>
+              <a>
+                {item}
+              </a>
             </li>
           ))
         }
