@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import * as actions from '../../redux/actions';
 import Navbar from "../../components/NavBar/navbar";
 import styles from "../../styles/institute.module.css";
-import SubjectCard from "../../components/SubjectCard";
+import SubjectCard from "..//../components/subjectCard";
 import getAccessKey from "../../api/getAccessKey";
 import getVideoLibraries from "../../api/getVideoLibraries";
 import getCollections from "../../api/getCollections";
