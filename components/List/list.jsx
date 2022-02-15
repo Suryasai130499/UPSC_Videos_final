@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/link-passhref */
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import cx from 'classnames';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,7 +19,7 @@ const List = ({
   useEffect(() => {
     const vl = [];
     for (let i = 1; i <= number; i++) {
-      vl.push(`${subject} Lecture No: ${i}`);
+      vl.push(`${subject.split('_').join(' ')} Lecture No: ${i}`);
     };
     setVideoList(vl);
   }, [number, setActiveVideo, subject]);
@@ -32,10 +34,14 @@ const List = ({
       <ul>
         {
           videoList.map((item, index) => (
-            <li className={
+            <li key={uuidv4()} className={
               cx(styles.listItem,
                 { [styles.active]: index === activeVideo })
-            } key={uuidv4()} onClick={() => handleLinkClick(index)}>{item}</li>
+            } onClick={() => handleLinkClick(index)}>
+              <a>
+                {item}
+              </a>
+            </li>
           ))
         }
       </ul>
@@ -46,6 +52,7 @@ const List = ({
 const mapStatetoProps = (state) => ({
   number: state.number,
   subject: state.subject,
+  institute: state.institute,
   activeVideo: state.activeVideo,
 });
 

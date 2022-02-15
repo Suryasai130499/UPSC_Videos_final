@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 1000px) {
   .list {
-    width: 100vw;
+    inline-size: 100vw;
     height: min-content;
   }
 }
