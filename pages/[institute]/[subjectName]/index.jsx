@@ -52,7 +52,7 @@ const SubjectPage = ({
   return (
     <>
       <Frame
-        title={`${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
+        title={lecture ? `${subject.split('_').join(' ')} Lecture No: ${lecture}` : `${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
         image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
       >
         <div className={styles.content}>
