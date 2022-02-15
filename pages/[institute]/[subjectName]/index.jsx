@@ -54,6 +54,11 @@ const SubjectPage = ({
     <>
       <Frame
         title={lecture ? `${subject.split('_').join(' ')} Lecture No: ${lecture}` : `${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
+        description={
+          lecture ?
+            `Lecture No: ${lecture} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.` :
+            `Lecture No: ${Number(activeVideo + 1)} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.`
+        }
         image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
       >
         <div className={styles.content}>
