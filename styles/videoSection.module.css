@@ -1,5 +1,12 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper {
-  width: 70vw;
+  position: relative;
+  inline-size: 70vw;
+  aspect-ratio: 16 / 9;
 }
 
 .title {
@@ -10,7 +17,7 @@
 
 @media screen and (max-width: 1000px) {
   .wrapper {
-    width: 100vw;
+    inline-size: 100vw;
   }
   .title {
     display: none;

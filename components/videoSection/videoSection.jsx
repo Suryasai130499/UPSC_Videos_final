@@ -1,45 +1,24 @@
-import { useRef, useEffect } from 'react';
-import {
-  Player,
-  ControlBar,
-  ReplayControl,
-  ForwardControl,
-  CurrentTimeDisplay,
-  TimeDivider,
-  PlaybackRateMenuButton,
-  VolumeMenuButton,
-  BigPlayButton,
-  LoadingSpinner,
-} from 'video-react';
 import { connect } from 'react-redux';
 import styles from '../../styles/videoSection.module.css';
 
-const VideoSection = ({
-  src,
-  subject,
-  activeVideo,
-}) => {
-  const playerRef = useRef(null);
-
+const VideoSection = ({ libraryId, video, subject, activeVideo }) => {
   return (
-    <div className={styles.wrapper}>
-      <Player ref={(player) => playerRef.current = player} preload='metadata'>
-        <source src={src} type="video/mp4" />
-        <LoadingSpinner />
-        <BigPlayButton position="center" />
-        <ControlBar autoHide>
-          <ReplayControl seconds={5} order={1.1} />
-          <ForwardControl seconds={5} order={1.2} />
-          <CurrentTimeDisplay order={4.1} />
-          <TimeDivider order={4.2} />
-          <PlaybackRateMenuButton rates={[2, 1.75, 1.5, 1.25, 1, 0.75, 0.5, 0.25]} order={7.1} />
-          <VolumeMenuButton vertical />
-        </ControlBar>
-      </Player>
-      <p className={styles.title}>
-        {`${subject} Lecture No: ${activeVideo + 1}`}
-      </p>
-    </div>
+    <>
+      <div className={styles.flex}>
+        <div className={styles.wrapper}>
+          <iframe src={`https://iframe.mediadelivery.net/embed/${libraryId}/${video}`} loading="lazy"
+            style={{
+              border: 0,
+              position: 'absolute',
+              top: 0,
+              height: `${100}%`,
+              width: `${100}%`
+            }}
+            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen="true" />
+        </div>
+        <p className={styles.title}>{`${subject} Lecture No: ${activeVideo + 1}`}</p>
+      </div>
+    </>
   );
 };
 
