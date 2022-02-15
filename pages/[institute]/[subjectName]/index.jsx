@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import * as actions from '../../../redux/actions';
 import styles from '../../../styles/subjectname.module.css';
-import Navbar from "../../../components/NavBar/navbar";
+import Frame from '../../../components/frame';
 import List from '../../../components/List/list';
 import VideoSection from '../../../components/videoSection/videoSection';
 import getAccessKey from '../../../api/getAccessKey';
@@ -20,6 +20,7 @@ const SubjectPage = ({
   subjectVideos,
   setVideos,
   setNumber,
+  subject,
   subjectName,
   setSubject,
   institute,
@@ -50,11 +51,15 @@ const SubjectPage = ({
 
   return (
     <>
-      <Navbar />
-      <div className={styles.content}>
-        <VideoSection key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />
-        <List />
-      </div>
+      <Frame
+        title={`${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
+        image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
+      >
+        <div className={styles.content}>
+          <VideoSection key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />
+          <List />
+        </div>
+      </Frame>
     </>
   );
 };
@@ -107,6 +112,7 @@ export async function getServerSideProps({ params: { institute, subjectName }, q
 
 const mapStatetoProps = (state) => ({
   institutes: state.institutes,
+  subject: state.subject,
   videos: state.videos,
   activeVideo: state.activeVideo,
 });

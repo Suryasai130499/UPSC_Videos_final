@@ -19,7 +19,7 @@ const List = ({
   useEffect(() => {
     const vl = [];
     for (let i = 1; i <= number; i++) {
-      vl.push(`${subject} Lecture No: ${i}`);
+      vl.push(`${subject.split('_').join(' ')} Lecture No: ${i}`);
     };
     setVideoList(vl);
   }, [number, setActiveVideo, subject]);

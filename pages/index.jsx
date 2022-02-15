@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import { connect } from 'react-redux'
-import Nav from "../components/NavBar/navbar";
+import { connect } from 'react-redux';
+import Frame from '../components/frame';
 import styles from "../styles/Home.module.css";
 import * as actions from "../redux/actions";
 import getAccessKey from "../api/getAccessKey";
@@ -25,12 +25,15 @@ const Home = ({
   }, [institutions, setInstitutes, topics]);
 
   return (
-    <section className={styles.homepage}>
-      <Nav />
-      <section>
-        <p className={styles.center}>Start Watching UPSC Videos by clicking on the Subject you need!</p>
+    <Frame
+      title='UPSC Videos'
+    >
+      <section className={styles.homepage}>
+        <section>
+          <p className={styles.center}>Start Watching UPSC Videos by clicking on the Subject you need!</p>
+        </section>
       </section>
-    </section>
+    </Frame>
   );
 }
 

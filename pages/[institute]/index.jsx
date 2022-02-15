@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import * as actions from '../../redux/actions';
-import Navbar from "../../components/NavBar/navbar";
+import Frame from '../../components/frame';
 import styles from "../../styles/institute.module.css";
 import SubjectCard from "..//../components/subjectCard";
 import getAccessKey from "../../api/getAccessKey";
@@ -24,14 +24,17 @@ const Institute = ({ institute, subjects, institutions, topics, setInstitutes })
 
   return (
     <>
-      <Navbar />
-      <div className={styles.wrapper}>
-        {
-          subjects.map((subject) => (
-            <SubjectCard key={uuidv4()} name={subject.name.split('__')[0]} count={subject.videoCount} institute={institute} />
-          ))
-        }
-      </div>
+      <Frame
+        title={`${institute} Videos`}
+      >
+        <div className={styles.wrapper}>
+          {
+            subjects.map((subject) => (
+              <SubjectCard key={uuidv4()} name={subject.name.split('__')[0]} count={subject.videoCount} institute={institute} />
+            ))
+          }
+        </div>
+      </Frame>
     </>
   );
 };
