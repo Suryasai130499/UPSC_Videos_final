@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-inline: 5rem;
+  padding-inline: var(--step-1);
   padding-block: 2rem;
   gap: 2rem;
 }
@@ -39,7 +39,7 @@
 
 .card_link {
   inline-size: fit-content;
-  padding-inline: 3rem;
+  padding-inline: var(--step-2);
   padding-block: 0.75rem;
   text-align: center;
   background-color: var(--color-accent);
