@@ -26,6 +26,7 @@ const Institute = ({ institute, subjects, institutions, topics, setInstitutes })
     <>
       <Frame
         title={`${institute} Videos`}
+        description={`${institute} Videos, Watch them on UPSC videos for free.`}
       >
         <div className={styles.wrapper}>
           {

@@ -26,7 +26,8 @@ const Home = ({
 
   return (
     <Frame
-      title='UPSC Videos'
+      title='Welcome'
+      description={'Welcome to UPSC Videos Website. Watch UPSC Videos of various coacing institutions for free'}
     >
       <section className={styles.homepage}>
         <section>

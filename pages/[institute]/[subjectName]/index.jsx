@@ -11,6 +11,7 @@ import getVideoLibraries from "../../../api/getVideoLibraries";
 import getCollections from "../../../api/getCollections";
 import getSubjectVideos from "../../../api/getSubjectVideos";
 
+// Main Page
 const SubjectPage = ({
   libraryId,
   ids,
@@ -52,7 +53,12 @@ const SubjectPage = ({
   return (
     <>
       <Frame
-        title={`${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
+        title={lecture ? `${subject.split('_').join(' ')} Lecture No: ${lecture}` : `${subject.split('_').join(' ')} Lecture No: ${Number(activeVideo + 1)}`}
+        description={
+          lecture ?
+            `Lecture No: ${lecture} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.` :
+            `Lecture No: ${Number(activeVideo + 1)} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.`
+        }
         image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
       >
         <div className={styles.content}>
