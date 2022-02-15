@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Nav from "./Navbar/navbar";
+import Nav from "./NavBar/navbar";
 
 const Frame = ({ title, image, children }) => {
   const router = useRouter();
