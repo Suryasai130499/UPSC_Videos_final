@@ -30,6 +30,7 @@ const SubjectPage = ({
   setInstitute,
   setInstitutes,
   lecture,
+  titles,
 }) => {
   useEffect(() => {
     const formatted_institutes = [];
@@ -63,7 +64,7 @@ const SubjectPage = ({
       >
         <div className={styles.content}>
           <VideoSection key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />
-          <List />
+          <List titles={titles} />
         </div>
       </Frame>
     </>
@@ -83,9 +84,10 @@ export async function getServerSideProps({ params: { institute, subjectName }, q
   const subjectId = subject[0].guid;
   const subjectVideos = await getSubjectVideos(apiKey, subjectId, id);
   subjectVideos.sort(function (a, b) {
-    return Number(a.title.split('.')[0]) - Number(b.title.split('.')[0])
+    return Number(a.title.slice(0, -4)) - Number(b.title.slice(0, -4))
   });
   const ids = subjectVideos.map((subject) => (subject.guid));
+  const titles = subjectVideos.map((subject) => (subject.title.slice(0, -4)));
   const institutes = [];
   const subjects = {};
   collections.Collections.forEach((collection) => {
@@ -112,6 +114,7 @@ export async function getServerSideProps({ params: { institute, subjectName }, q
       ids,
       institutions: institutes,
       topics: subjects,
+      titles,
     }
   }
 }

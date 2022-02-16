@@ -9,6 +9,7 @@ import * as actions from '../../redux/actions';
 
 
 const List = ({
+  titles,
   number,
   subject,
   activeVideo,
@@ -19,10 +20,10 @@ const List = ({
   useEffect(() => {
     const vl = [];
     for (let i = 1; i <= number; i++) {
-      vl.push(`${subject.split('_').join(' ')} Lecture No: ${i}`);
+      vl.push(`${subject.split('_').join(' ')} Lecture No: ${titles[i - 1]}`);
     };
     setVideoList(vl);
-  }, [number, setActiveVideo, subject]);
+  }, [number, setActiveVideo, subject, titles]);
 
   const handleLinkClick = (index) => {
     setActiveVideo(index);

@@ -14,7 +14,7 @@ const VideoSection = ({ libraryId, video, subject, activeVideo }) => {
               height: `${100}%`,
               width: `${100}%`
             }}
-            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen="true" />
+            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen={true} />
         </div>
         <p className={styles.title}>{`${subject} Lecture No: ${activeVideo + 1}`}</p>
       </div>
