@@ -2,7 +2,6 @@ import {
   Provider
 } from 'react-redux';
 import '../styles/globals.css';
-import 'video-react/dist/video-react.css';
 import store from '../redux/store';
 
 function MyApp({

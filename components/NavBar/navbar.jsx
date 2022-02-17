@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import cx from 'classnames';
+import { isMobile } from 'react-device-detect';
 import styles from '../../styles/NavBar.module.css';
 import * as actions from '../../redux/actions';
 
@@ -27,12 +28,22 @@ const NavBar = ({ subject, subjects, institutes, setInstitute }) => {
   }
 
   const openDropDown = (index) => {
-    setInstitute(Institutes[index]);
-    setActive(index);
+    if (isMobile) {
+      Subjects.current.classList.remove(styles.show);
+      return;
+    }
+    else {
+      setInstitute(Institutes[index]);
+      setActive(index);
+    }
   }
 
   const closeDropDown = () => {
-    setActive(null);
+    if (isMobile) {
+      return;
+    } else {
+      setActive(null);
+    }
   }
 
   return (
