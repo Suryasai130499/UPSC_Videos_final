@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { AES } from 'crypto-js'
 import Frame from '../components/frame';
 import styles from "../styles/Home.module.css";
 import * as actions from "../redux/actions";
@@ -12,8 +13,16 @@ const Home = ({
   institutions,
   topics,
   setInstitutes,
+  tokenKey,
 }) => {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      localStorage.setItem('token', AES.encrypt(tokenKey, 'surya@123'));
+    }
+  })
+
   const formatted_institutes = [];
+
   useEffect(() => {
     institutions.map((institution) => {
       let temp = {};
@@ -40,6 +49,7 @@ const Home = ({
 
 export async function getServerSideProps() {
   const accessKey = await (await getAccessKey()).apiKey;
+  const tokenKey = await (await getAccessKey()).tokenKey;
   const videoLibraries = await getVideoLibraries(accessKey);
   const videoLibrary = videoLibraries[0];
   const id = videoLibrary.Id;
@@ -63,6 +73,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
+      tokenKey,
       institutions: institutes,
       topics: subjects,
     }

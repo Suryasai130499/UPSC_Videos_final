@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { AES, enc } from 'crypto-js';
 import { v4 as uuidv4 } from 'uuid';
 import * as actions from '../../../redux/actions';
 import styles from '../../../styles/subjectname.module.css';
@@ -13,6 +14,7 @@ import getSubjectVideos from "../../../api/getSubjectVideos";
 
 // Main Page
 const SubjectPage = ({
+  tokenKey,
   libraryId,
   ids,
   videos,
@@ -32,6 +34,12 @@ const SubjectPage = ({
   lecture,
   titles,
 }) => {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      localStorage.setItem('token', AES.encrypt(tokenKey, 'surya@123'));
+    }
+  });
+
   useEffect(() => {
     const formatted_institutes = [];
     institutions.map((institution) => {
@@ -63,7 +71,7 @@ const SubjectPage = ({
         image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
       >
         <div className={styles.content}>
-          <VideoSection key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />
+          <VideoSection titles={titles} key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />
           <List titles={titles} />
         </div>
       </Frame>
@@ -74,6 +82,7 @@ const SubjectPage = ({
 export async function getServerSideProps({ params: { institute, subjectName }, query }) {
   const lecture = query.lecture;
   const accessKey = await (await getAccessKey()).apiKey;
+  const tokenKey = await (await getAccessKey()).tokenKey;
   const videoLibraries = await getVideoLibraries(accessKey);
   const videoLibrary = videoLibraries[0];
   const id = videoLibrary.Id;
@@ -106,6 +115,7 @@ export async function getServerSideProps({ params: { institute, subjectName }, q
 
   return {
     props: {
+      tokenKey,
       lecture: lecture || null,
       institute,
       subjectName,

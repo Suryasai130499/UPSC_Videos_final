@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { AES, enc } from 'crypto-js';
 import * as actions from '../../redux/actions';
 import Frame from '../../components/frame';
 import styles from "../../styles/institute.module.css";
@@ -10,7 +11,13 @@ import getAccessKey from "../../api/getAccessKey";
 import getVideoLibraries from "../../api/getVideoLibraries";
 import getCollections from "../../api/getCollections";
 
-const Institute = ({ institute, subjects, institutions, topics, setInstitutes }) => {
+const Institute = ({ institute, subjects, institutions, topics, setInstitutes, tokenKey }) => {
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      localStorage.setItem('token', AES.encrypt(tokenKey, 'surya@123'));
+    }
+  });
+
   useEffect(() => {
     const formatted_institutes = [];
     institutions.map((institution) => {
@@ -42,6 +49,7 @@ const Institute = ({ institute, subjects, institutions, topics, setInstitutes })
 
 export async function getServerSideProps({ params: { institute } }) {
   const accessKey = await (await getAccessKey()).apiKey;
+  const tokenKey = await (await getAccessKey()).tokenKey;
   const videoLibraries = await getVideoLibraries(accessKey);
   const videoLibrary = videoLibraries[0];
   const id = videoLibrary.Id;
@@ -66,6 +74,7 @@ export async function getServerSideProps({ params: { institute } }) {
 
   return {
     props: {
+      tokenKey,
       institute,
       subjects: institute_collections,
       institutions: institutes,

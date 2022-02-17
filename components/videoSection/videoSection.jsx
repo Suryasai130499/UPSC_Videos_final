@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import styles from '../../styles/videoSection.module.css';
 
-const VideoSection = ({ libraryId, video, subject, activeVideo }) => {
+const VideoSection = ({ libraryId, video, subject, titles, activeVideo }) => {
   return (
     <>
       <div className={styles.flex}>
@@ -16,7 +16,7 @@ const VideoSection = ({ libraryId, video, subject, activeVideo }) => {
             }}
             allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen={true} />
         </div>
-        <p className={styles.title}>{`${subject} Lecture No: ${activeVideo + 1}`}</p>
+        <p className={styles.title}>{`${subject.split('_').join(' ')} Lecture No: ${titles[activeVideo]}`}</p>
       </div>
     </>
   );
