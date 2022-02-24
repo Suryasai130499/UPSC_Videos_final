@@ -8,14 +8,12 @@
 }
 
 :root {
-  /* CSS HSL */
   --color-primary-900: hsla(240, 27%, 18%, 1);
   --color-primary-400: hsla(232, 17%, 35%, 1);
   --color-accent: hsla(309, 6%, 58%, 1);
   --color-secondary-400: hsla(11, 24%, 72%, 1);
   --color-secondary-100: hsla(21, 35%, 92%, 1);
 
-  /* Typography */
   --step--2: clamp(0.42rem, 0.34rem + 0.41vw, 0.63rem);
   --step--1: clamp(0.56rem, 0.45rem + 0.55vw, 0.84rem);
   --step-0: clamp(0.75rem, 0.6rem + 0.73vw, 1.13rem);
@@ -54,7 +52,11 @@
   --color-primary-900: hsla(0, 0%, 100%, 1);
 }
 
-html,
+html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   padding: 0;
   margin: 0;
