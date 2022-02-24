@@ -3,6 +3,7 @@ import {
 } from 'react-redux';
 import '../styles/globals.css';
 import store from '../redux/store';
+import ThemeContextWrapper from '../components/themeContextWrapper';
 
 function MyApp({
   Component,
@@ -10,10 +11,12 @@ function MyApp({
 }) {
   return (
     <Provider store={store}>
-      <Component {
-        ...pageProps
-      }
-      />
+      <ThemeContextWrapper>
+        <Component {
+          ...pageProps
+        }
+        />
+      </ThemeContextWrapper>
     </Provider>
   )
 }

@@ -10,3 +10,4 @@ export const setInstitutes = createAction(actionTypes.SET_INSTITUTES);
 export const setVideos = createAction(actionTypes.SET_VIDEOS);
 export const setActiveVideo = createAction(actionTypes.SET_ACTIVE_VIDEO);
 export const setNumber = createAction(actionTypes.SET_NUMBER);
+export const setTheme = createAction(actionTypes.SET_THEME);

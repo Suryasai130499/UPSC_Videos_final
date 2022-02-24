@@ -5,3 +5,4 @@ export const SET_INSTITUTES = 'SET_INSTITUTES';
 export const SET_VIDEOS = 'SET_VIDEOS';
 export const SET_ACTIVE_VIDEO = 'SET_ACTIVE_VIDEO';
 export const SET_NUMBER = 'SET_NUMBER';
+export const SET_THEME = 'SET_THEME';

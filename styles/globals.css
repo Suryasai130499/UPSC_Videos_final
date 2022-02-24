@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 * {
+  background: 0;
+  outline: 0;
+  border: 0;
   scroll-behavior: smooth;
 }
 
@@ -25,13 +28,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* CSS HSL */
     --color-secondary-100: hsla(0, 0%, 0%, 1);
     --color-secondary-400: hsla(228, 11.6%, 56.1%, 1);
     --color-accent: hsla(240, 6.5%, 80.5%, 1);
     --color-primary-400: hsla(219, 9.6%, 59.2%, 1);
     --color-primary-900: hsla(0, 0%, 100%, 1);
   }
+}
+
+.light-theme {
+  --color-primary-900: hsla(240, 27%, 18%, 1);
+  --color-primary-400: hsla(232, 17%, 35%, 1);
+  --color-accent: hsla(309, 6%, 58%, 1);
+  --color-secondary-400: hsla(11, 24%, 72%, 1);
+  --color-secondary-100: hsla(21, 35%, 92%, 1);
+  --color-foreground: hsl(0, 0%, 0%);
+  --color-background: hsl(0, 0%, 100%);
+}
+
+.dark-theme {
+  --color-secondary-100: hsla(0, 0%, 0%, 1);
+  --color-secondary-400: hsla(228, 11.6%, 56.1%, 1);
+  --color-accent: hsla(240, 6.5%, 80.5%, 1);
+  --color-primary-400: hsla(219, 9.6%, 59.2%, 1);
+  --color-primary-900: hsla(0, 0%, 100%, 1);
 }
 
 html,

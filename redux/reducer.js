@@ -31,6 +31,7 @@ const INITIAL_STATE = {
   ],
   videos: [],
   activeVideo: 0,
+  theme: true,
 }
 
 const Reducer = createReducer(INITIAL_STATE, (builder) => {
@@ -64,6 +65,12 @@ const Reducer = createReducer(INITIAL_STATE, (builder) => {
         ...state,
         videos: action.payload,
       }))
+    .addCase(
+      actionTypes.SET_THEME, (state, action) => ({
+        ...state,
+        theme: action.payload,
+      })
+    )
     .addCase(
       actionTypes.SET_ACTIVE_VIDEO, (state, action) => ({
         ...state,
