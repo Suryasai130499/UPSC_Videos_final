@@ -6,6 +6,10 @@
   margin-block: 2rem;
 }
 
+.navbar :is(h1) {
+  font-size: 1.777rem;
+}
+
 .subjects {
   display: flex;
   align-items: center;

@@ -68,7 +68,7 @@ const SubjectPage = ({
             `Lecture No: ${lecture} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.` :
             `Lecture No: ${Number(activeVideo + 1)} of ${subject.split('_').join(' ')} from Institute ${institute}. Watch it free in UPSC Videos.`
         }
-        image={`https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
+        image={lecture ? `https://vz-c578b78e-ef8.b-cdn.net/${ids[Number(lecture) - 1]}/thumbnail.jpg` : `https://vz-c578b78e-ef8.b-cdn.net/${ids[activeVideo]}/thumbnail.jpg`}
       >
         <div className={styles.content}>
           <VideoSection titles={titles} key={uuidv4()} libraryId={libraryId} video={ids[activeVideo]} />

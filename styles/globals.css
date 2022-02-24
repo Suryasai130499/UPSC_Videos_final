@@ -23,12 +23,24 @@
   --step-5: clamp(3.16rem, 2.54rem + 3.08vw, 4.74rem);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* CSS HSL */
+    --color-secondary-100: hsla(239, 94%, 19%, 1);
+    --color-secondary-400: hsla(201, 100%, 36%, 1);
+    --color-accent: hsla(190, 100%, 42%, 1);
+    --color-primary-400: hsla(189, 75%, 75%, 1);
+    --color-primary-900: hsla(190, 77%, 88%, 1);
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: var(--color-secondary-100);
+  color: var(--color-primary-900);
 }
 
 h1,
@@ -39,10 +51,6 @@ h5 {
   font-weight: 400;
   font-family: 'Playfair Display', serif;
   color: var(--color-primary-900);
-}
-
-p {
-  /* margin-bottom: 1rem; */
 }
 
 h1 {

@@ -51,7 +51,7 @@ const NavBar = ({ subject, subjects, institutes, setInstitute }) => {
       <nav className={styles.navbar}>
         <Link href="/">
           <a>
-            <h4>UPSC Videos</h4>
+            <h1>UPSC Videos</h1>
           </a>
         </Link>
         <ul ref={Subjects} className={styles.subjects}>

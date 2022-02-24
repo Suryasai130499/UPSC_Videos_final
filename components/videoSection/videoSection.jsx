@@ -16,7 +16,7 @@ const VideoSection = ({ libraryId, video, subject, titles, activeVideo }) => {
             }}
             allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen={true} />
         </div>
-        <p className={styles.title}>{`${subject.split('_').join(' ')} Lecture No: ${titles[activeVideo]}`}</p>
+        <h2 className={styles.title}>{`${subject.split('_').join(' ')} Lecture No: ${titles[activeVideo]}`}</h2>
       </div>
     </>
   );
