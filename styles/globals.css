@@ -26,11 +26,11 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* CSS HSL */
-    --color-secondary-100: hsla(240, 16.5%, 17.8%, 1);
+    --color-secondary-100: hsla(0, 0%, 0%, 1);
     --color-secondary-400: hsla(228, 11.6%, 56.1%, 1);
     --color-accent: hsla(240, 6.5%, 80.5%, 1);
     --color-primary-400: hsla(219, 9.6%, 59.2%, 1);
-    --color-primary-900: hsla(240, 33.3%, 96.5%, 1);
+    --color-primary-900: hsla(0, 0%, 100%, 1);
   }
 }
 
