@@ -45,10 +45,6 @@
   block-size: 100%;
 }
 
-.subjects > a > li.active {
-  color: var(--color-secondary-400);
-}
-
 .dropdown {
   margin-block-start: 1rem;
   position: absolute;
@@ -152,10 +148,6 @@
 
   .subjects > a > li:hover {
     background: var(--color-primary-400);
-  }
-
-  .subjects > a > li.active {
-    color: var(--color-primary-400);
   }
 }
 

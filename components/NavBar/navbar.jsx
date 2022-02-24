@@ -84,7 +84,7 @@ const NavBar = ({ subject, subjects, institutes, setInstitute }) => {
             Object.keys(subjects).map((key, index) => {
               return <Link key={uuidv4()} href={`/${key}`} passHref>
                 <a>
-                  <li onClick={() => closeMenu()} className={cx({ [styles.active]: key === subject })}>
+                  <li onClick={() => closeMenu()}>
                     {key}
                   </li>
                 </a>
