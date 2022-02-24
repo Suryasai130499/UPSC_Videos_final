@@ -208,7 +208,8 @@
 
 @media screen and (max-width: 1000px) {
   .menu {
-    display: block;
+    display: inline-grid;
+    place-items: center;
   }
 
   .dropdown {
